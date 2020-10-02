@@ -1,0 +1,46 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  
+  margin-bottom: 60px; /* Margin bottom by footer height */
+}
+.container a {
+  text-decoration: none;
+}
+.container {
+  flex: 1 1 auto;
+  font-size: 15pt;
+  width: auto;
+  max-width: 900px;
+  padding: 0 15px;
+  height: auto;
+}
+#footercontent {
+    font-size: 12pt;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* Set the fixed height of the footer here */
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+  border-top: 1px solid;
+
+}
+
+.footer a{
+  color: #000000;
+  font-size: 12pt;
+}
+/*.backgroundimg{
+  display:flex;
+  flex-direction:column;  
+  max-width: 1920px;
+  max-height: 1080px;
+  background-image: url("https://images.blz-contentstack.com/v3/assets/blt3452e3b114fab0cd/blt0a70f219593379ea/5dbb292924642a3b8da56e09/Wallpaper_1920x1080_-_Cinematic_1.jpg");
+}*/
