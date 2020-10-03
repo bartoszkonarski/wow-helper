@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% block extrajs %}
+<script>
+    $(document).ready(function(){
+      $('#submitbutton').attr("disabled", true);
+      $("#fg2").hide();
+      $("#fg3").hide();
+      $("#fg4").hide();
+      $("#fg5").hide();
+
+      $("#itemtype").change(function(){
+        $("#fg2").show();
+        $('[name="source"]').prop("checked", false);
+        $('#mainstat').val("");
+        $('[name="offstat"]').prop("checked", false);
+        $("#fg3").hide();
+        $("#fg4").hide();
+        $('#spec').val("");
+        $("#fg5").hide();
+        $('#submitbutton').attr("disabled", true);
+        });
+
+      $('[name="source"]').change(function(){
+
+        if ($("#itemtype").val()=='Cloth' || $("#itemtype").val()=='Leather' || $("#itemtype").val()=='Mail'|| $("#itemtype").val()=='Plate')
+          $("#fg3").show();
+        if ($("#itemtype").val()=='Neck/Ring')
+          $("#fg4").show();
+        if ($("#itemtype").val()=='Trinket')
+          $("#fg5").show();
+        if (!$('#raid').is(":checked") && !$('#dungeon').is(":checked")){
+          $('#mainstat').val("");
+          $('[name="offstat"]').prop("checked", false);
+          $("#fg3").hide();
+          $("#fg4").hide();
+          $("#fg5").hide();
+          $('#submitbutton').attr("disabled", true);
+        }
+        });
+
+      $("#mainstat").change(function(){
+        $("#fg4").show();
+        $("#fg5").hide();
+        $('#submitbutton').attr("disabled", true);
+        });
+
+      $('[name="offstat"]').change(function(){
+        var checkedBoxes = $("input[type=checkbox]:checked", "#fg4");
+        if (checkedBoxes.length!=2){
+          $('#submitbutton').attr("disabled", true);
+        }else{
+          $('#submitbutton').attr("disabled", false)
+        }
+        });
+
+      $('#spec').change(function(){
+        if ($("#spec").val()==''){
+          $('#submitbutton').attr("disabled", true);
+        }else{
+          $('#submitbutton').attr("disabled", false)
+        }
+        });
+
+  });
+</script>
+{% endblock %}
+{% block content %}
+<form method="POST"  action="#">
+        {% csrf_token %}
+  <div class="form-group" id="fg1">
+    <label for="itemtype">Item type:</label>
+    <select class="form-control" id="itemtype">
+      <option selected disabled></option>
+      <option>Cloth</option>
+      <option>Leather</option>
+      <option>Mail</option>
+      <option>Plate</option>
+      <option>Neck/Ring</option>
+      <option>Trinket</option>
+    </select>
+  </div>
+  <div class="form-group" id="fg2">
+        <label>Source:</label><br>
+        <input type="checkbox" class="form-check-input" name="source" value="Raid" id="raid">
+        <label class="form-check-label" for="raid">Raid</label>
+        <input type="checkbox" class="form-check-input" name="source" value="Dungeon" id="dungeon">
+        <label class="form-check-label" for="dungeon">Dungeon</label>
+        <br>
+  </div>
+  <div class="form-group" id="fg3">
+    <label for="itemtype">Main Stat:</label>
+    <select class="form-control" id="mainstat">
+      <option selected disabled></option>
+      <option>Intellect</option>
+      <option>Agility</option>
+      <option>Strength</option>
+    </select>
+  </div>
+  <div class="form-group" id="fg4">
+    <label>Secondary Stats:</label><br>
+        <input type="checkbox" class="form-check-input" name="offstat" value="Haste" id="haste">
+        <label class="form-check-label" for="haste">Haste</label>
+        <input type="checkbox" class="form-check-input" name="offstat" value="Crit" id="crit">
+        <label class="form-check-label" for="crit">Critical Strike</label>
+        <input type="checkbox" class="form-check-input" name="offstat" value="Vers" id="vers">
+        <label class="form-check-label" for="vers">Versatility</label>
+        <input type="checkbox" class="form-check-input" name="offstat" value="Mastery" id="mastery">
+        <label class="form-check-label" for="mastery">Mastery</label>
+        <br>
+  </div>
+  <div class="form-group" id="fg5">
+    <label for="itemtype">Spec:</label>
+    <select class="form-control" id="spec">
+      <option selected disabled></option>
+      <option>Tank</option>
+      <option>Healer</option>
+      <option>Caster</option>
+      <option>Melee/Hunter</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary" id="submitbutton">Submit</button>
+
+
+</form>
+{% endblock %}
