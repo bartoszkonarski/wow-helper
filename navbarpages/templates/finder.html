@@ -46,10 +46,17 @@
 
       $('[name="offstat"]').change(function(){
         var checkedBoxes = $("input[type=checkbox]:checked", "#fg4");
-        if (checkedBoxes.length!=2){
-          $('#submitbutton').attr("disabled", true);
+        var uncheckedBoxes = $("input[type=checkbox]:not(:checked)","#fg4")
+        if (checkedBoxes.length==2){
+          $('#submitbutton').attr("disabled", false);
+          for ( var i = 0, l = uncheckedBoxes.length; i < l; i++ ) {
+            uncheckedBoxes[i].disabled = true;
+          }
         }else{
-          $('#submitbutton').attr("disabled", false)
+          $('#submitbutton').attr("disabled", false);
+          for ( var i = 0, l = uncheckedBoxes.length; i < l; i++ ) {
+            uncheckedBoxes[i].disabled = false;
+          }
         }
         });
 
@@ -57,7 +64,7 @@
         if ($("#spec").val()==''){
           $('#submitbutton').attr("disabled", true);
         }else{
-          $('#submitbutton').attr("disabled", false)
+          $('#submitbutton').attr("disabled", false);
         }
         });
 
