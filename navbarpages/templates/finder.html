@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}{% load static %}
 {% block extrajs %}
 <script>
-    $(document).ready(function(){
+$(document).ready(function(){
       $('#submitbutton').attr("disabled", true);
       $("#fg2").hide();
       $("#fg3").hide();
@@ -53,7 +53,7 @@
             uncheckedBoxes[i].disabled = true;
           }
         }else{
-          $('#submitbutton').attr("disabled", false);
+          $('#submitbutton').attr("disabled", true);
           for ( var i = 0, l = uncheckedBoxes.length; i < l; i++ ) {
             uncheckedBoxes[i].disabled = false;
           }
@@ -69,14 +69,14 @@
         });
 
   });
-</script>
+  </script>
 {% endblock %}
 {% block content %}
 <form method="POST"  action="#">
         {% csrf_token %}
   <div class="form-group" id="fg1">
     <label for="itemtype">Item type:</label>
-    <select class="form-control" id="itemtype">
+    <select class="form-control" name="itemtype" id="itemtype">
       <option selected disabled></option>
       <option>Cloth</option>
       <option>Leather</option>
@@ -88,15 +88,15 @@
   </div>
   <div class="form-group" id="fg2">
         <label>Source:</label><br>
-        <input type="checkbox" class="form-check-input" name="source" value="Raid" id="raid">
+        <input type="checkbox" class="form-check-input" name="source" id="raid">
         <label class="form-check-label" for="raid">Raid</label>
-        <input type="checkbox" class="form-check-input" name="source" value="Dungeon" id="dungeon">
+        <input type="checkbox" class="form-check-input" name="source" id="dungeon">
         <label class="form-check-label" for="dungeon">Dungeon</label>
         <br>
   </div>
   <div class="form-group" id="fg3">
     <label for="itemtype">Main Stat:</label>
-    <select class="form-control" id="mainstat">
+    <select class="form-control" name="mainstat" id="mainstat">
       <option selected disabled></option>
       <option>Intellect</option>
       <option>Agility</option>
