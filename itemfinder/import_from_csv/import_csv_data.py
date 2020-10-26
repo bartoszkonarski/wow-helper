@@ -69,7 +69,7 @@ def import_trinkets():
                                        source_name=row[3],
                                        spec=row[4],
                                        image_url=row[5],
-                                       wowhead_url=row[6    ]
+                                       wowhead_url=row[6]
                                        )
 
 

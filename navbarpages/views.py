@@ -6,6 +6,9 @@ def homepage(response):
     return render(response,"home.html",{})
 
 def itemfinder(response):
+    return render(response,"finder.html",{})
+
+def result(response):
     if response.method == "POST":
         itemtype = response.POST.get("itemtype")
         print(itemtype)
@@ -21,6 +24,4 @@ def itemfinder(response):
         for item in q:
             print(item)
 
-
-
-    return render(response,"finder.html",{})
+    return render(response,"result.html",{})
