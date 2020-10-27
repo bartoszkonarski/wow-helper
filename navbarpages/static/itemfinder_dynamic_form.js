@@ -7,9 +7,9 @@ $(document).ready(function(){
 
       $("#itemtype").change(function(){
         $("#fg2").show();
-        $('[name="source"]').prop("checked", false);
+        $('[name="source[]"]').prop("checked", false);
         $('#mainstat').val("");
-        $('[name="offstat"]').prop("checked", false);
+        $('[name="offstat[]"]').prop("checked", false);
         $("#fg3").hide();
         $("#fg4").hide();
         $('#spec').val("");
@@ -17,7 +17,7 @@ $(document).ready(function(){
         $('#submitbutton').attr("disabled", true);
         });
 
-      $('[name="source"]').change(function(){
+      $('[name="source[]"]').change(function(){
 
         if ($("#itemtype").val()=='Cloth' || $("#itemtype").val()=='Leather' || $("#itemtype").val()=='Mail'|| $("#itemtype").val()=='Plate')
           $("#fg3").show();
@@ -27,7 +27,7 @@ $(document).ready(function(){
           $("#fg5").show();
         if (!$('#raid').is(":checked") && !$('#dungeon').is(":checked")){
           $('#mainstat').val("");
-          $('[name="offstat"]').prop("checked", false);
+          $('[name="offstat[]"]').prop("checked", false);
           $("#fg3").hide();
           $("#fg4").hide();
           $("#fg5").hide();
@@ -41,7 +41,7 @@ $(document).ready(function(){
         $('#submitbutton').attr("disabled", true);
         });
 
-      $('[name="offstat"]').change(function(){
+      $('[name="offstat[]"]').change(function(){
         var checkedBoxes = $("input[type=checkbox]:checked", "#fg4");
         var uncheckedBoxes = $("input[type=checkbox]:not(:checked)","#fg4")
         if (checkedBoxes.length==2){

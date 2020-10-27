@@ -10,15 +10,15 @@
       <option>Leather</option>
       <option>Mail</option>
       <option>Plate</option>
-      <option>Neck/Ring</option>
+      <option>Cloak/Neck/Ring</option>
       <option>Trinket</option>
     </select>
   </div>
   <div class="form-group" id="fg2">
         <label>Source:</label><br>
-        <input type="checkbox" class="form-check-input" name="source" id="raid">
+        <input type="checkbox" class="form-check-input" name="source[]" id="raid" value="raid"/>
         <label class="form-check-label" for="raid">Raid</label>
-        <input type="checkbox" class="form-check-input" name="source" id="dungeon">
+        <input type="checkbox" class="form-check-input" name="source[]" id="dungeon" value="dungeon"/>
         <label class="form-check-label" for="dungeon">Dungeon</label>
         <br>
   </div>
@@ -33,19 +33,19 @@
   </div>
   <div class="form-group" id="fg4">
     <label>Secondary Stats:</label><br>
-        <input type="checkbox" class="form-check-input" name="offstat" value="Haste" id="haste">
+        <input type="checkbox" class="form-check-input" name="offstat[]" value="Haste" id="haste"/>
         <label class="form-check-label" for="haste">Haste</label>
-        <input type="checkbox" class="form-check-input" name="offstat" value="Crit" id="crit">
+        <input type="checkbox" class="form-check-input" name="offstat[]" value="Crit" id="crit">
         <label class="form-check-label" for="crit">Critical Strike</label>
-        <input type="checkbox" class="form-check-input" name="offstat" value="Vers" id="vers">
+        <input type="checkbox" class="form-check-input" name="offstat[]" value="Vers" id="vers">
         <label class="form-check-label" for="vers">Versatility</label>
-        <input type="checkbox" class="form-check-input" name="offstat" value="Mastery" id="mastery">
+        <input type="checkbox" class="form-check-input" name="offstat[]" value="Mastery" id="mastery">
         <label class="form-check-label" for="mastery">Mastery</label>
         <br>
   </div>
   <div class="form-group" id="fg5">
     <label for="itemtype">Spec:</label>
-    <select class="form-control" id="spec">
+    <select class="form-control" name="spec" id="spec">
       <option selected disabled></option>
       <option>Tank</option>
       <option>Healer</option>
