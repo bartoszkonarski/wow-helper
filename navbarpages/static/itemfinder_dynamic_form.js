@@ -49,12 +49,16 @@ $(document).ready(function(){
           for ( var i = 0, l = uncheckedBoxes.length; i < l; i++ ) {
             uncheckedBoxes[i].disabled = true;
           }
-        }else{
+        }else if (checkedBoxes.length!=1){
           $('#submitbutton').attr("disabled", true);
           for ( var i = 0, l = uncheckedBoxes.length; i < l; i++ ) {
             uncheckedBoxes[i].disabled = false;
           }
-        }
+        }else{
+          $('#submitbutton').attr("disabled", false);
+          for ( var i = 0, l = uncheckedBoxes.length; i < l; i++ ) {
+            uncheckedBoxes[i].disabled = false;
+        }}
         });
 
       $('#spec').change(function(){

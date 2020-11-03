@@ -19,9 +19,6 @@ def result(response):
                "Neck/Ring": Other,
                "Trinket": Trinket}
         currentModel = types.get(itemtype)
-        print(response.POST)
-        print(response.POST.getlist('source[]'))
-        print(response.POST.getlist("source[]")[0])
         if len(response.POST.getlist("source[]")) == 2:
             q = currentModel.objects.all()
         elif response.POST.getlist("source[]")[0] == "raid":
@@ -30,7 +27,6 @@ def result(response):
             q = currentModel.objects.filter(source="Dungeon")
         armortypes = [Cloth,Leather,Mail,Plate]
         offstats = response.POST.getlist('offstat[]')
-        print(offstats)
         if currentModel in armortypes:
             if response.POST.get('mainstat') == "Intellect":
                 q = q.filter(intellect=True)
@@ -59,7 +55,5 @@ def result(response):
                 q= q.filter(crit__gt=0)
             if "Haste" in offstats:
                 q= q.filter(haste__gt=0)
-        for item in q:
-            print(item)
 
     return render(response,"result.html",{'objects': q,})
