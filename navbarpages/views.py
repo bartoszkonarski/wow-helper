@@ -16,15 +16,17 @@ def result(response):
                "Leather": Leather,
                "Mail": Mail,
                "Plate": Plate,
-               "Neck/Ring": Other,
+               "Cloak/Neck/Ring": Other,
                "Trinket": Trinket}
         currentModel = types.get(itemtype)
+
         if len(response.POST.getlist("source[]")) == 2:
             q = currentModel.objects.all()
         elif response.POST.getlist("source[]")[0] == "raid":
             q = currentModel.objects.filter(source="Raid")
         else:
             q = currentModel.objects.filter(source="Dungeon")
+            
         armortypes = [Cloth,Leather,Mail,Plate]
         offstats = response.POST.getlist('offstat[]')
         if currentModel in armortypes:

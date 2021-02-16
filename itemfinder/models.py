@@ -7,7 +7,6 @@ SOURCES = (
 SLOTS = (
     ('Head', 'Head'),
     ('Shoulder', 'Shoulder'),
-    ('Back', 'Back'),
     ('Chest', 'Chest'),
     ('Wrist', 'Wrist'),
     ('Hands', 'Hands'),
@@ -18,6 +17,7 @@ SLOTS = (
 OTHERSLOTS = (
     ('Neck', 'Neck'),
     ('Finger', 'Finger'),
+    ('Back', 'Back'),
 )
 SPECS = (
     ('Heal', 'Heal'),
