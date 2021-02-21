@@ -6,12 +6,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src=https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/js/jquery.dataTables.min.js></script>
   <script src=https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/js/dataTables.bootstrap.min.js></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="{% static 'itemfinder_dynamic_form.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
   {% block extrajs %}
   {% endblock %}
 </head>
@@ -20,14 +24,19 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WoW-Helper</a>
+      <a id='logo' href="{% url 'homepage' %}" class="navbar-brand">WoW<span>Toolkit</span></a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="{% url 'homepage' %}">Home</a></li>
       <li><a href="{% url 'itemfinder' %}">Shadowlands Item Finder</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
     </ul>
+    <div class="dropdown">
+      <button class="dropbtn">Guild Tools
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="#">Weekly Dungeon Check</a>
+      </div>
+  </div>
   </div>
 </nav>
 

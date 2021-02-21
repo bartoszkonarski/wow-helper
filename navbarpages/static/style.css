@@ -5,7 +5,8 @@ html {
   min-height: 100%;
 }
 body {
-  
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
   margin-bottom: 60px; /* Margin bottom by footer height */
 }
 .container a {
@@ -44,3 +45,66 @@ body {
   max-height: 1080px;
   background-image: url("https://images.blz-contentstack.com/v3/assets/blt3452e3b114fab0cd/blt0a70f219593379ea/5dbb292924642a3b8da56e09/Wallpaper_1920x1080_-_Cinematic_1.jpg");
 }*/
+#logo{
+  font-size: 22px;
+  font-weight: 800;
+}
+#logo span{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+}
+.dropdown {
+  min-width: 230px;
+  float: right;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: rgb(102, 102, 102);
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: fixed;
+  background-color: #f9f9f9;
+  max-width: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  
+  display: block;
+}
+.navbar-header{
+  font-size: 16pt;
+}
