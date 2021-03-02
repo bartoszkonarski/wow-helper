@@ -1,23 +1,27 @@
 from django.shortcuts import render
-from itemfinder.models import Cloth,Leather,Mail,Plate,Trinket,Other
+from itemfinder.models import Cloth, Leather, Mail, Plate, Trinket, Other
 from django.db import models
+
 # Create your views here.
+
+
 def homepage(response):
-    return render(response,"home.html",{})
+    return render(response, "home.html", {})
+
 
 def itemfinder(response):
-    return render(response,"finder.html",{})
+    return render(response, "finder.html", {})
 
 
 def result(response):
     if response.method == "POST":
         itemtype = response.POST.get("itemtype")
         types = {"Cloth": Cloth,
-               "Leather": Leather,
-               "Mail": Mail,
-               "Plate": Plate,
-               "Cloak/Neck/Ring": Other,
-               "Trinket": Trinket}
+                 "Leather": Leather,
+                 "Mail": Mail,
+                 "Plate": Plate,
+                 "Cloak/Neck/Ring": Other,
+                 "Trinket": Trinket}
         currentModel = types.get(itemtype)
 
         if len(response.POST.getlist("source[]")) == 2:
@@ -26,8 +30,8 @@ def result(response):
             q = currentModel.objects.filter(source="Raid")
         else:
             q = currentModel.objects.filter(source="Dungeon")
-            
-        armortypes = [Cloth,Leather,Mail,Plate]
+
+        armortypes = [Cloth, Leather, Mail, Plate]
         offstats = response.POST.getlist('offstat[]')
         if currentModel in armortypes:
             if response.POST.get('mainstat') == "Intellect":
@@ -38,24 +42,28 @@ def result(response):
                 q = q.filter(strength=True)
         elif currentModel == Other:
             if "Mastery" in offstats:
-                q= q.filter(mastery__gt=0)
+                q = q.filter(mastery__gt=0)
             if "Vers" in offstats:
-                q= q.filter(vers__gt=0)
+                q = q.filter(vers__gt=0)
             if "Crit" in offstats:
-                q= q.filter(crit__gt=0)
+                q = q.filter(crit__gt=0)
             if "Haste" in offstats:
-                q= q.filter(haste__gt=0)
+                q = q.filter(haste__gt=0)
         else:
             trinket_spec = response.POST.get('spec')
             q = q.filter(spec=trinket_spec)
         if currentModel in armortypes:
             if "Mastery" in offstats:
-                q= q.filter(mastery__gt=0)
+                q = q.filter(mastery__gt=0)
             if "Vers" in offstats:
-                q= q.filter(vers__gt=0)
+                q = q.filter(vers__gt=0)
             if "Crit" in offstats:
-                q= q.filter(crit__gt=0)
+                q = q.filter(crit__gt=0)
             if "Haste" in offstats:
-                q= q.filter(haste__gt=0)
+                q = q.filter(haste__gt=0)
 
-    return render(response,"result.html",{'objects': q,})
+    return render(response, "result.html", {'objects': q, })
+
+
+def dungeoncheck(response):
+    return render(response, "dungeoncheck.html", {})
