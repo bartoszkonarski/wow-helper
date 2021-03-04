@@ -2,8 +2,6 @@ from django.shortcuts import render
 from itemfinder.models import Cloth, Leather, Mail, Plate, Trinket, Other
 from django.db import models
 import requests
-import urllib
-from django import template
 # Create your views here.
 
 
@@ -73,11 +71,7 @@ def result(response):
 
     return render(response, "result.html", {'objects': q, })
 
-register = template.Library()
 
-@register.filter
-def get_encoded_dict(data_dict):
-    return urllib.parse.urlencode(data_dict)
 
 def dungeoncheck(response):
 
