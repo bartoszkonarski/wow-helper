@@ -107,3 +107,9 @@ body {
 .navbar-header {
 	font-size: 16pt;
 }
+.table td {
+	text-align: center;
+}
+.table th {
+	text-align: center;
+}

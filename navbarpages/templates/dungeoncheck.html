@@ -1,11 +1,22 @@
 {% extends 'base.html' %} {% block content %}
 <p>Weekly Dungeon Guild Members Check</p>
-<table>
-	{% for key, value in sorted_dict.items %}
-	<tr>
-		<td>{{key}}</td>
-		<td>{{value}}</td>
-	</tr>
+<table class="table table-striped table-bordered table-hover" id="resultsTable">
+	{% for item in objects %}
+	<p>{{item}}</p>
 	{% endfor %}
+	<thead class="thead-light">
+		<tr>
+			<th scope="col">Name</th>
+			<th scope="col">Keys this week</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for key, value in sorted_dict.items %}
+		<tr scope="row">
+			<td>{{key}}</td>
+			<td>{{value}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
 </table>
 {% endblock %}
