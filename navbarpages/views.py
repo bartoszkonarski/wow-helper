@@ -79,12 +79,13 @@ def result(response):
 def dungeoncheck(response):
     if (datetime.now(timezone.utc) - AccessToken.objects.filter(name="BlizzardAPI")[0].date).total_seconds() < 3400:
         token = AccessToken.objects.filter(name="BlizzardAPI")[0].token
-        print("yes")
     else:
         access = create_access_token(
             "d7de467d23d148de8323181b37f03941", "wZ9mfpIsyQ3HznAv5sNYuYxaejoVadoJ")
         token = access["access_token"]
-        print("no")
+        p = AccessToken.objects.filter(name="BlizzardAPI")[0]
+        p.token = token
+        p.save()
 
     url = f"https://eu.api.blizzard.com/data/wow/guild/burning-legion/homeless/roster?namespace=profile-eu&locale=en_US&access_token={token}"
 
