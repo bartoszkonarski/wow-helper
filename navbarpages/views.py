@@ -77,6 +77,13 @@ def result(response):
 
 
 def dungeoncheck(response):
+    if response.method != "POST":
+        originalGuildName = "Homeless"
+        guildName = "homeless"
+    else:
+        originalGuildName = response.POST.get("guildname")
+        guildName = originalGuildName.lower()
+        guildName = guildName.replace(" ", "-")
     if (datetime.now(timezone.utc) - AccessToken.objects.filter(name="BlizzardAPI")[0].date).total_seconds() < 3400:
         token = AccessToken.objects.filter(name="BlizzardAPI")[0].token
     else:
@@ -87,17 +94,16 @@ def dungeoncheck(response):
         p.token = token
         p.save()
 
-    url = f"https://eu.api.blizzard.com/data/wow/guild/burning-legion/homeless/roster?namespace=profile-eu&locale=en_US&access_token={token}"
+    url = f"https://eu.api.blizzard.com/data/wow/guild/burning-legion/{guildName}/roster?namespace=profile-eu&locale=en_US&access_token={token}"
 
     print(requests.get(url).status_code)
     apiresponse = requests.get(url).json()
 
     members = []
     for member in apiresponse["members"]:
-        if member["rank"] in (0, 1, 4, 5):
+        if member["rank"] in (0, 1, 4, 5) and member["character"]["level"] == 60:
             members.append(member["character"]["name"])
-    members.remove("Cptcookie")
-    members.append("Laykop")
+    # members.append("Laykop")
     members_dict = {}
 
     for member in members:
@@ -112,7 +118,7 @@ def dungeoncheck(response):
     sorted_dict = dict(
         sorted(members_dict.items(), key=lambda item: item[1], reverse=True)
     )
-    return render(response, "dungeoncheck.html", {"sorted_dict": sorted_dict})
+    return render(response, "dungeoncheck.html", {"sorted_dict": sorted_dict, "GuildName": originalGuildName})
 
 
 def create_access_token(client_id, client_secret, region="us"):
