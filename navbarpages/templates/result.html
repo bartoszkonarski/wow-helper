@@ -1,14 +1,12 @@
-{% extends 'base.html' %} {% block extrajs %}
-<script>
-	$(document).ready(function () {
-		$("#resultsTable").DataTable({
-			searching: false,
-			paging: false,
-		});
-	});
-</script>
+{% extends 'base.html' %}{% load static %} {% block extrajs %}
+
+<script src="{% static 'bootstrap-sortable.js' %}"></script>
+
 {% endblock %} {% block content %}
-<table class="table table-striped table-bordered table-hover" id="resultsTable">
+<table
+	class="table table-striped table-bordered table-hover sortable"
+	id="resultsTable"
+>
 	{% for item in objects %}
 	<p>{{item}}</p>
 	{% endfor %}
