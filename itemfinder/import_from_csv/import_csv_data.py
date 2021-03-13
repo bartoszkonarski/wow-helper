@@ -1,7 +1,10 @@
 import os
-
+import sys
+sys.path.append("F:\Projects\Python\WoW-helper\wowhelper")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(BASE_DIR)
+os.environ['DJANGO_SETTINGS_MODULE'] = 'wowhelper.settings'
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wowhelper.settings")
-
 import django
 
 django.setup()

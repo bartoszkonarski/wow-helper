@@ -4,19 +4,19 @@
 <form method="POST" action="{% url 'result' %}">
 	{% csrf_token %}
 	<div class="form-group" id="fg1">
-		<label for="itemtype">Item type:</label>
+		<label for="itemtype" class="headlabel">Item type:</label>
 		<select class="form-control" name="itemtype" id="itemtype">
 			<option selected disabled></option>
 			<option>Cloth</option>
 			<option>Leather</option>
 			<option>Mail</option>
 			<option>Plate</option>
-			<option>Neck/Finger</option>
-			<option>Trinket</option>
+			<option>Neck/Finger/Cloak</option>
+			<!--<option>Trinket</option>-->
 		</select>
 	</div>
 	<div class="form-group" id="fg2">
-		<label>Source:</label></br>
+		<label class="headlabel">Source:</label></br>
 		<div class="form-check">
 		<input
 			type="checkbox"
@@ -37,7 +37,7 @@
 		<br /></div>
 	</div>
 	<div class="form-group" id="fg3">
-		<label for="itemtype">Main Stat:</label>
+		<label for="itemtype" class="headlabel">Main Stat:</label>
 		<select class="form-control" name="mainstat" id="mainstat">
 			<option selected disabled></option>
 			<option>Intellect</option>
@@ -46,7 +46,7 @@
 		</select>
 	</div>
 	<div class="form-group" id="fg4">
-		<label>Secondary Stats:</label><br />
+		<label class="headlabel">Secondary Stats:</label><br />
 		<div class="form-check">
 		<input
 			type="checkbox"
@@ -83,7 +83,7 @@
 		<br /></div>
 	</div>
 	<div class="form-group" id="fg5">
-		<label for="itemtype">Spec:</label>
+		<label for="spec" class="headlabel">Spec:</label>
 		<select class="form-control" name="spec" id="spec">
 			<option selected disabled></option>
 			<option>Tank</option>
@@ -96,5 +96,6 @@
 	<button type="submit" class="btn btn-primary" id="submitbutton">
 		Submit
 	</button>
+	<p>*Weapons and trinkets are not supported yet</p>
 </form>
 {% endblock %}

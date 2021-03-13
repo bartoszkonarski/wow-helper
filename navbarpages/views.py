@@ -24,7 +24,7 @@ def result(response):
             "Leather": Leather,
             "Mail": Mail,
             "Plate": Plate,
-            "Cloak/Neck/Ring": Other,
+            "Neck/Ring/Cloak": Other,
             "Trinket": Trinket,
         }
         currentModel = types.get(itemtype)
@@ -57,6 +57,7 @@ def result(response):
         else:
             trinket_spec = response.POST.get("spec")
             q = q.filter(spec=trinket_spec)
+
         if currentModel in armortypes:
             if "Mastery" in offstats:
                 q = q.filter(mastery__gt=0)

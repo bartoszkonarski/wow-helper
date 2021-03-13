@@ -25,3 +25,7 @@ body {
 .form-check-label {
 	margin-right: 25px;
 }
+.headlabel {
+	text-decoration: solid underline;
+	font-weight: bold;
+}
