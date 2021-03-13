@@ -24,7 +24,7 @@ def result(response):
             "Leather": Leather,
             "Mail": Mail,
             "Plate": Plate,
-            "Neck/Ring/Cloak": Other,
+            "Neck/Finger/Cloak": Other,
             "Trinket": Trinket,
         }
         currentModel = types.get(itemtype)
@@ -81,10 +81,14 @@ def dungeoncheck(response):
     if response.method != "POST":
         originalGuildName = "Homeless"
         guildName = "homeless"
+        ranks = (0, 1, 4, 5)
     else:
         originalGuildName = response.POST.get("guildname")
         guildName = originalGuildName.lower()
         guildName = guildName.replace(" ", "-")
+        ranks = response.POST.getlist("ranks[]")
+        for i in range(len(ranks)):
+            ranks[i] = int(ranks[i])
     if (datetime.now(timezone.utc) - AccessToken.objects.filter(name="BlizzardAPI")[0].date).total_seconds() < 3400:
         token = AccessToken.objects.filter(name="BlizzardAPI")[0].token
     else:
@@ -94,32 +98,35 @@ def dungeoncheck(response):
         p = AccessToken.objects.filter(name="BlizzardAPI")[0]
         p.token = token
         p.save()
+    try:
+        url = f"https://eu.api.blizzard.com/data/wow/guild/burning-legion/{guildName}/roster?namespace=profile-eu&locale=en_US&access_token={token}"
 
-    url = f"https://eu.api.blizzard.com/data/wow/guild/burning-legion/{guildName}/roster?namespace=profile-eu&locale=en_US&access_token={token}"
-
-    print(requests.get(url).status_code)
-    apiresponse = requests.get(url).json()
-
-    members = []
-    for member in apiresponse["members"]:
-        if member["rank"] in (0, 1, 4, 5) and member["character"]["level"] == 60:
-            members.append(member["character"]["name"])
-    # members.append("Laykop")
-    members_dict = {}
-
-    for member in members:
-        counter = 0
-        url = f"https://raider.io/api/v1/characters/profile?region=eu&realm=Burning%20Legion&name={member}&fields=mythic_plus_weekly_highest_level_runs"
+        print(requests.get(url).status_code)
         apiresponse = requests.get(url).json()
-        for key in apiresponse["mythic_plus_weekly_highest_level_runs"]:
-            if key["mythic_level"] >= 14:
-                counter += 1
-        members_dict[member] = counter
 
-    sorted_dict = dict(
-        sorted(members_dict.items(), key=lambda item: item[1], reverse=True)
-    )
-    return render(response, "dungeoncheck.html", {"sorted_dict": sorted_dict, "GuildName": originalGuildName})
+        members = []
+        for member in apiresponse["members"]:
+            if member["rank"] in ranks and member["character"]["level"] == 60:
+                members.append(member["character"]["name"])
+        # members.append("Laykop")
+        members_dict = {}
+
+        for member in members:
+            counter = 0
+            url = f"https://raider.io/api/v1/characters/profile?region=eu&realm=Burning%20Legion&name={member}&fields=mythic_plus_weekly_highest_level_runs"
+            apiresponse = requests.get(url).json()
+            for key in apiresponse["mythic_plus_weekly_highest_level_runs"]:
+                if key["mythic_level"] >= 14:
+                    counter += 1
+            members_dict[member] = counter
+
+        sorted_dict = dict(
+            sorted(members_dict.items(),
+                   key=lambda item: item[1], reverse=True)
+        )
+        return render(response, "dungeoncheck.html", {"sorted_dict": sorted_dict, "GuildName": originalGuildName})
+    except:
+        return render(response, "dungeoncheck.html", {"GuildName": "Exception!!!"})
 
 
 def create_access_token(client_id, client_secret, region="us"):

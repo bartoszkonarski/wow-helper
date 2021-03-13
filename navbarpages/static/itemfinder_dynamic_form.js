@@ -21,7 +21,7 @@ $(document).ready(function(){
 
         if ($("#itemtype").val()=='Cloth' || $("#itemtype").val()=='Leather' || $("#itemtype").val()=='Mail'|| $("#itemtype").val()=='Plate')
           $("#fg3").show();
-        if ($("#itemtype").val()=='Neck/Ring')
+        if ($("#itemtype").val()=='Neck/Finger/Cloak')
           $("#fg4").show();
         if ($("#itemtype").val()=='Trinket')
           $("#fg5").show();

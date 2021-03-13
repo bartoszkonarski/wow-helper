@@ -1,15 +1,20 @@
 {% extends 'base.html' %}{% load static %} {% block extrajs %}
 
 <script src="{% static 'bootstrap-sortable.js' %}"></script>
-
+<script>
+	const whTooltips = {
+		colorLinks: true,
+		iconizeLinks: true,
+		renameLinks: true,
+		iconSize: "medium",
+	};
+</script>
+<script src="https://wow.zamimg.com/widgets/power.js"></script>
 {% endblock %} {% block content %}
 <table
 	class="table table-striped table-bordered table-hover sortable"
 	id="resultsTable"
 >
-	{% for item in objects %}
-	<p>{{item}} - {{item.source_name}}</p>
-	{% endfor %}
 	<thead class="thead-light">
 		<tr>
 			<th scope="col">Slot</th>
@@ -18,16 +23,15 @@
 		</tr>
 	</thead>
 	<tbody>
+		{% for item in objects %}
 		<tr>
-			<td>Mark</td>
-			<td>Otto</td>
-			<td>@mdo</td>
+			<td>{{item.slot}}</td>
+			<td>
+				<a href="{{item.wowhead_url}}">{{item}}</a>
+			</td>
+			<td>{{item.source_name}}</td>
 		</tr>
-		<tr>
-			<td>Jacob</td>
-			<td>Thornton</td>
-			<td>@fat</td>
-		</tr>
+		{% endfor %}
 	</tbody>
 </table>
 <br />

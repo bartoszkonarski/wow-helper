@@ -29,3 +29,13 @@ body {
 	text-decoration: solid underline;
 	font-weight: bold;
 }
+.guildform {
+	position: fixed;
+	top: 35%;
+}
+caption {
+	display: table-caption;
+	text-align: center;
+	caption-side: top;
+	font-size: 20px;
+}
