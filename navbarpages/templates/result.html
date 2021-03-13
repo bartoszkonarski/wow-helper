@@ -8,7 +8,7 @@
 	id="resultsTable"
 >
 	{% for item in objects %}
-	<p>{{item}}</p>
+	<p>{{item}} - {{item.source_name}}</p>
 	{% endfor %}
 	<thead class="thead-light">
 		<tr>

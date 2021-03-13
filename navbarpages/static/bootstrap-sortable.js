@@ -1,4 +1,10 @@
 /**
+ THIS SCRIPT WAS NOT DEVELOPED BY ME IN ANY MEANS - FULL CREDIT GOES TO:
+    https://github.com/drvic10k/bootstrap-sortable
+    https://github.com/drvic10k/bootstrap-sortable
+    https://github.com/drvic10k/bootstrap-sortable
+
+
  * adding sorting ability to HTML tables with Bootstrap styling
  * @summary HTML tables sorting ability
  * @version 2.0.1
