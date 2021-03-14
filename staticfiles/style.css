@@ -1,0 +1,65 @@
+.navbar {
+	flex: 0 1 auto;
+}
+.navbar .navbar-brand {
+	border-right: 3px solid white;
+	padding-right: 10px;
+}
+body {
+	min-height: 100vh;
+}
+
+.flex-fill {
+	flex: 1 1 auto;
+}
+#content {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.table td {
+	text-align: center;
+}
+.table th {
+	text-align: center;
+}
+.form-check-label {
+	margin-right: 25px;
+}
+.headlabel {
+	text-decoration: solid underline;
+	font-weight: bold;
+}
+.guildform {
+	border: 2px solid;
+	border-color: #6c757d;
+	border-radius: 25px;
+	padding: 15px;
+	margin: 15px;
+}
+caption {
+	display: table-caption;
+	text-align: center;
+	caption-side: top;
+	font-size: 20px;
+}
+.table thead th {
+	vertical-align: middle;
+}
+.table a {
+	color: inherit;
+}
+.table a:hover {
+	text-decoration: none;
+}
+@media only screen and (min-width: 1200px) {
+	.guildform {
+		position: fixed;
+		top: 35%;
+	}
+}
+@media only screen and (min-width: 992px) {
+	.guildform {
+		position: fixed;
+		top: 35%;
+	}
+}
