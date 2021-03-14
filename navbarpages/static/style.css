@@ -30,12 +30,36 @@ body {
 	font-weight: bold;
 }
 .guildform {
-	position: fixed;
-	top: 35%;
+	border: 2px solid;
+	border-color: #6c757d;
+	border-radius: 25px;
+	padding: 15px;
+	margin: 15px;
 }
 caption {
 	display: table-caption;
 	text-align: center;
 	caption-side: top;
 	font-size: 20px;
+}
+.table thead th {
+	vertical-align: middle;
+}
+.table a {
+	color: inherit;
+}
+.table a:hover {
+	text-decoration: none;
+}
+@media only screen and (min-width: 1200px) {
+	.guildform {
+		position: fixed;
+		top: 35%;
+	}
+}
+@media only screen and (min-width: 992px) {
+	.guildform {
+		position: fixed;
+		top: 35%;
+	}
 }
