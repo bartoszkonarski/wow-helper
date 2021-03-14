@@ -25,7 +25,8 @@ SECRET_KEY = os.environ["SCRTKEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'wow-shadowlands-helper.herokuapp.com', 'localhost']
 
 
 # Application definition

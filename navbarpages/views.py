@@ -85,6 +85,7 @@ def dungeoncheck(response):
     else:
         originalGuildName = response.POST.get("guildname")
         guildName = originalGuildName.lower()
+        originalGuildName = originalGuildName.title()
         guildName = guildName.replace(" ", "-")
         ranks = response.POST.getlist("ranks[]")
         for i in range(len(ranks)):

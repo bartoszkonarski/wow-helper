@@ -1,0 +1,1 @@
+web: gunicorn wowhelper.wsgi --log-file -
