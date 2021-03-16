@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'itemfinder',
     'navbarpages',
-    'apiaccess'
+    'apiaccess',
+    'raidsignups'
 ]
 
 MIDDLEWARE = [

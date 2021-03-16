@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block content %} {% if code %}
+<h1>Successfully created new raid with code: {{code}}</h1>
+{% endif %}
+<h3>List of existing raids:</h3>
+<ul>
+	{%for raid in raids %}
+	<li>
+		<a href="{%url 'raidview' raid_code=raid.code %}">{{raid}}</a>
+	</li>
+	{%endfor%}
+</ul>
+{%endblock content %}

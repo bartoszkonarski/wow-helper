@@ -10,11 +10,11 @@
 {% endblock extrajs%} {% block content %}
 <div class="row">
 <div class="col-lg-4 col-sm-12"><div class="guildform">
-<form method="POST"  action="{% url 'dungeoncheck' %}">
+<form method="POST" autocomplete="off"  action="{% url 'dungeoncheck' %}">
 	{% csrf_token %}
 
 	<label for="guildname" class="headlabel">Guild Name:</label><br>
-	<input name="guildname" id="guildname"><br>
+	<input name="guildname" autocomplete="off" id="guildname"><br>
 	
 	<label class="headlabel">Raiders' ranks (0 - GM etc):</label></br>
 		<div class="form-check">

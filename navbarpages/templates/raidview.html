@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}
+<h3>Raid: {{raid_code}}, created: {{date}} UTC</h3>
+<div class="row">
+	<form
+		method="POST"
+		autocomplete="off"
+		action="{%url 'raidview' raid_code=raid_code %}"
+	>
+		{% csrf_token %}
+
+		<label for="name" class="headlabel">Name:</label><br />
+		<input name="name" autocomplete="off" id="name" /><br />
+
+		<button type="submit" class="btn btn-outline-secondary" id="submitbutton">
+			Submit
+		</button>
+	</form>
+</div>
+<br />
+<h5>Currently signed up players:</h5>
+{%for raider in raiders %}
+<p>{{raider}}</p>
+{%endfor%} {% endblock %}

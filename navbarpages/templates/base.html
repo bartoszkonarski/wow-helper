@@ -31,7 +31,11 @@
 				<a class="nav-link dropdown-toggle active" href="" id="navbarDropdown" role="button" data-toggle="dropdown">Guild Features</a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="{% url 'dungeoncheck' %}">Mythic Dungeon Check</a>
-					<!--<div class="dropdown-divider"></div>-->
+					<div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'raidcreate' %}">Plan new Raid</a>
+					<div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'raidlist' %}">Raids list</a>
+					{% comment %} <div class="dropdown-divider"></div> {% endcomment %}
 				</div>
 			</li>
 		</ul>

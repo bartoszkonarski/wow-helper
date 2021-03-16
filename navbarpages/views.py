@@ -4,7 +4,7 @@ from django.db import models
 import requests
 from apiaccess.models import AccessToken
 from datetime import datetime, timezone, timedelta
-
+from raidsignups.models import Raid, Raider, generate_code
 # Create your views here.
 
 
@@ -138,3 +138,31 @@ def create_access_token(client_id, client_secret, region="us"):
         auth=(client_id, client_secret),
     )
     return response.json()
+
+
+def raidview(response, raid_code):
+    raid = Raid.objects.filter(code=raid_code)
+    if response.method == "POST":
+        name = response.POST.get('name')
+        newRaider = Raider(name=name, playerclass="c1",
+                           playerspec="c2", latestraid=raid[0])
+        newRaider.save()
+    raiders = raid[0].raider_set.all()
+    print(raiders)
+
+    date = raid[0].date
+    return render(response, "raidview.html", {"raid_code": raid_code, "date": date, "raiders": raiders})
+
+
+def raidcreate(response):
+    return render(response, "raidcreate.html", {})
+
+
+def raidlist(response):
+    if response.method == "POST":
+        code = generate_code()
+        newRaid = Raid(code=code)
+        newRaid.save()
+    else:
+        code = False
+    return render(response, "raidlist.html", {"code": code, 'raids': reversed(Raid.objects.all())})

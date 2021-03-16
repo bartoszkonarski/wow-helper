@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% load static %} {% block extrajs %}
+<script></script>
+{% endblock extrajs%} {% block content %}
+<div class="col-8 offset-2">
+	<form method="POST" action="{% url 'raidlist' %}">
+		{% csrf_token %}
+		<button type="submit" class="btn btn-primary" id="submitbutton">
+			Create new Raid
+		</button>
+	</form>
+</div>
+{% endblock %}
